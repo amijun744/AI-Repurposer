@@ -3,74 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repurpose.AI | Technical Content Engine</title>
+    <title>REPURPOSE // KERNEL v1.0</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font for that sleek tech look -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
-    <!-- Animated background mesh -->
-    <div class="mesh-gradient"></div>
-    
-    <main class="app-container">
-        <header class="glass-header">
-            <div class="logo">REPURPOSE<span>.AI</span></div>
-            <div class="status-badge"><span class="pulse"></span> Engine Online</div>
-        </header>
+<body class="elite-theme">
+    <div class="noise-overlay"></div>
+    <div class="glow-container">
+        <div class="blob-1"></div>
+        <div class="blob-2"></div>
+    </div>
 
-        <div class="bento-grid">
-            <!-- INPUT TILE -->
-            <section class="tile input-tile">
-                <div class="tile-header">
-                    <span class="icon">📝</span>
-                    <h3>Source Material</h3>
-                </div>
-                <textarea id="source-input" placeholder="Paste your article, script, or technical docs here..."></textarea>
-                <div class="action-bar">
-                    <button id="transform-btn" onclick="handleTransform()">
-                        <span class="btn-text">Generate Assets</span>
-                        <div class="shimmer"></div>
-                    </button>
-                </div>
-            </section>
+    <main class="viewport">
+        <nav class="top-nav">
+            <div class="brand">SYSTEM:<span>REPURPOSE</span></div>
+            <div class="system-metrics">
+                <div class="metric">LATENCY: <span id="ms">12ms</span></div>
+                <div class="metric">MODEL: <span id="ver">GEMINI-3-ULTRA</span></div>
+            </div>
+        </nav>
 
-            <!-- X/TWITTER TILE -->
-            <section class="tile" data-delay="1">
-                <div class="tile-header">
-                    <span class="icon">🐦</span>
-                    <h3>X Thread</h3>
+        <div class="elite-grid">
+            <!-- THE KERNEL (INPUT) -->
+            <div class="bento-card kernel" id="kernel-input">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="tag">INPUT_STREAM</div>
+                    <textarea id="main-input" placeholder=">> INITIALIZE CONTENT STREAM..."></textarea>
+                    <div class="ctrl-row">
+                        <button class="execute-btn" onclick="runEliteEngine()">
+                            <span>EXECUTE_TRANSFORM</span>
+                        </button>
+                    </div>
                 </div>
-                <div id="x-output" class="output-content"></div>
-            </section>
+            </div>
 
-            <!-- LINKEDIN TILE -->
-            <section class="tile" data-delay="2">
-                <div class="tile-header">
-                    <span class="icon">💼</span>
-                    <h3>LinkedIn Post</h3>
+            <!-- ASSET: X-THREAD -->
+            <div class="bento-card x-asset" data-stagger="1">
+                <div class="card-content">
+                    <div class="tag">ASSET_01 // X_THREAD</div>
+                    <div class="output-viewer" id="x-view"></div>
                 </div>
-                <div id="linkedin-output" class="output-content"></div>
-            </section>
+            </div>
 
-            <!-- IMAGE PROMPT TILE -->
-            <section class="tile" data-delay="3">
-                <div class="tile-header">
-                    <span class="icon">🎨</span>
-                    <h3>Visual Prompts</h3>
+            <!-- ASSET: LINKEDIN -->
+            <div class="bento-card li-asset" data-stagger="2">
+                <div class="card-content">
+                    <div class="tag">ASSET_02 // PROFESSIONAL</div>
+                    <div class="output-viewer" id="li-view"></div>
                 </div>
-                <div id="image-output" class="output-content"></div>
-            </section>
+            </div>
 
-            <!-- STATS TILE (Small) -->
-            <section class="tile mini-tile" data-delay="4">
-                <div class="stat-group">
-                    <span class="label">Token Efficiency</span>
-                    <div class="stat-value">98.2%</div>
+            <!-- ASSET: IMAGE PARAMS -->
+            <div class="bento-card img-asset" data-stagger="3">
+                <div class="card-content">
+                    <div class="tag">ASSET_03 // VISUAL_PROMPTS</div>
+                    <div class="output-viewer" id="img-view"></div>
                 </div>
-            </section>
+            </div>
         </div>
     </main>
-
     <script src="script.js"></script>
 </body>
 </html>
