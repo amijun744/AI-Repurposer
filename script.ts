@@ -1,34 +1,41 @@
 /**
- * AI Repurposer Core Logic - TypeScript
+ * AI Repurposer - Aesthetic Animation Engine
  */
 
-interface ContentPackage {
-    originalLength: number;
-    xThread: string[];
-    linkedInPost: string;
-    imagePrompts: string[];
-}
+const handleTransform = async (): Promise<void> => {
+    const btn = document.getElementById('transform-btn') as HTMLButtonElement;
+    const input = document.getElementById('source-input') as HTMLTextAreaElement;
+    
+    if (!input.value) return;
 
-class RepurposerEngine {
-    private apiKey: string = "YOUR_API_KEY";
+    // Start loading state
+    btn.innerText = "Repurposing...";
+    btn.style.opacity = "0.7";
 
-    async transformContent(sourceText: string): Promise<ContentPackage> {
-        // In a real app, this would be a fetch() call to your backend/AI API
-        console.log("Processing content for repurposing...");
+    // Simulate AI Processing with staggered reveal
+    const tiles = document.querySelectorAll('.tile:not(.input-tile)');
+    
+    tiles.forEach((tile, index) => {
+        const t = tile as HTMLElement;
+        t.style.opacity = "0.3";
+        t.style.filter = "blur(10px)";
         
-        // Simulating AI Response structure
-        return {
-            originalLength: sourceText.length,
-            xThread: [
-                "1/ Here is a summary of the main points...",
-                "2/ Secondly, we noticed that...",
-                "3/ In conclusion, the future looks bright. 🚀"
-            ],
-            linkedInPost: "I recently dived deep into this topic and realized that consistency is the key to scaling technical projects...",
-            imagePrompts: [
-                "A cinematic 3D render of a glass-morphism workspace, 4k",
-                "Abstract neon nodes connecting in a decentralized network"
-            ]
-        };
-    }
-}
+        setTimeout(() => {
+            t.style.opacity = "1";
+            t.style.filter = "blur(0)";
+            t.classList.add('reveal-animation');
+            
+            // Inject dummy AI data based on tile ID
+            const output = t.querySelector('.output-content');
+            if (output) {
+                if (t.id === "x-output") output.innerHTML = "1/ Analyzing the core architecture... <br> 2/ Scaling decentralized nodes.";
+                else output.innerHTML = "Success! Generated platform-specific copy.";
+            }
+        }, 800 * (index + 1)); // Stagger each tile by 800ms
+    });
+
+    setTimeout(() => {
+        btn.innerText = "Generate Assets";
+        btn.style.opacity = "1";
+    }, 3000);
+};
