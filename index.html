@@ -1,27 +1,76 @@
-<!-- Main Canvas -->
-<div class="bento-container">
-    <!-- Tile 1: Original Source -->
-    <div class="tile source-tile">
-        <h3>Source Content</h3>
-        <textarea id="input-text" placeholder="Paste your article here..."></textarea>
-        <button onclick="startRepurposing()" class="glow-btn">TRANSFORM</button>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repurpose.AI | Technical Content Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font for that sleek tech look -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated background mesh -->
+    <div class="mesh-gradient"></div>
+    
+    <main class="app-container">
+        <header class="glass-header">
+            <div class="logo">REPURPOSE<span>.AI</span></div>
+            <div class="status-badge"><span class="pulse"></span> Engine Online</div>
+        </header>
 
-    <!-- Tile 2: X (Twitter) Thread -->
-    <div class="tile" id="x-thread-output">
-        <span class="label">X THREAD</span>
-        <div class="content-preview">Generated thread will appear here...</div>
-    </div>
+        <div class="bento-grid">
+            <!-- INPUT TILE -->
+            <section class="tile input-tile">
+                <div class="tile-header">
+                    <span class="icon">📝</span>
+                    <h3>Source Material</h3>
+                </div>
+                <textarea id="source-input" placeholder="Paste your article, script, or technical docs here..."></textarea>
+                <div class="action-bar">
+                    <button id="transform-btn" onclick="handleTransform()">
+                        <span class="btn-text">Generate Assets</span>
+                        <div class="shimmer"></div>
+                    </button>
+                </div>
+            </section>
 
-    <!-- Tile 3: LinkedIn Version -->
-    <div class="tile" id="linkedin-output">
-        <span class="label">LINKEDIN</span>
-        <div class="content-preview">Professional summary...</div>
-    </div>
+            <!-- X/TWITTER TILE -->
+            <section class="tile" data-delay="1">
+                <div class="tile-header">
+                    <span class="icon">🐦</span>
+                    <h3>X Thread</h3>
+                </div>
+                <div id="x-output" class="output-content"></div>
+            </section>
 
-    <!-- Tile 4: AI Visual Prompts -->
-    <div class="tile" id="image-prompts">
-        <span class="label">VISUAL PROMPTS</span>
-        <ul class="prompt-list"></ul>
-    </div>
-</div>
+            <!-- LINKEDIN TILE -->
+            <section class="tile" data-delay="2">
+                <div class="tile-header">
+                    <span class="icon">💼</span>
+                    <h3>LinkedIn Post</h3>
+                </div>
+                <div id="linkedin-output" class="output-content"></div>
+            </section>
+
+            <!-- IMAGE PROMPT TILE -->
+            <section class="tile" data-delay="3">
+                <div class="tile-header">
+                    <span class="icon">🎨</span>
+                    <h3>Visual Prompts</h3>
+                </div>
+                <div id="image-output" class="output-content"></div>
+            </section>
+
+            <!-- STATS TILE (Small) -->
+            <section class="tile mini-tile" data-delay="4">
+                <div class="stat-group">
+                    <span class="label">Token Efficiency</span>
+                    <div class="stat-value">98.2%</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
