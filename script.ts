@@ -1,41 +1,52 @@
 /**
- * AI Repurposer - Aesthetic Animation Engine
+ * REPURPOSE // KERNEL CORE
+ * Elite Level Implementation
  */
 
-const handleTransform = async (): Promise<void> => {
-    const btn = document.getElementById('transform-btn') as HTMLButtonElement;
-    const input = document.getElementById('source-input') as HTMLTextAreaElement;
-    
+// 1. Initial State
+gsap.from(".bento-card", {
+    duration: 1.5,
+    opacity: 0,
+    y: 30,
+    stagger: 0.1,
+    ease: "expo.out"
+});
+
+async function runEliteEngine(): Promise<void> {
+    const input = document.getElementById('main-input') as HTMLTextAreaElement;
     if (!input.value) return;
 
-    // Start loading state
-    btn.innerText = "Repurposing...";
-    btn.style.opacity = "0.7";
+    // Trigger Processing Animation
+    gsap.to(".kernel", { duration: 0.2, borderColor: "#7000ff", repeat: 5, yoyo: true });
 
-    // Simulate AI Processing with staggered reveal
-    const tiles = document.querySelectorAll('.tile:not(.input-tile)');
+    // Simulate Decryption/Analysis
+    const views = ['x-view', 'li-view', 'img-view'];
     
-    tiles.forEach((tile, index) => {
-        const t = tile as HTMLElement;
-        t.style.opacity = "0.3";
-        t.style.filter = "blur(10px)";
-        
-        setTimeout(() => {
-            t.style.opacity = "1";
-            t.style.filter = "blur(0)";
-            t.classList.add('reveal-animation');
+    for (const viewId of views) {
+        const el = document.getElementById(viewId);
+        if (el) {
+            el.innerHTML = `<span class="scanning">DECRYPTING_DATA_STREAM...</span>`;
             
-            // Inject dummy AI data based on tile ID
-            const output = t.querySelector('.output-content');
-            if (output) {
-                if (t.id === "x-output") output.innerHTML = "1/ Analyzing the core architecture... <br> 2/ Scaling decentralized nodes.";
-                else output.innerHTML = "Success! Generated platform-specific copy.";
-            }
-        }, 800 * (index + 1)); // Stagger each tile by 800ms
-    });
+            // GSAP Sequence for "Digital Materialization"
+            gsap.to(el, {
+                opacity: 0.5,
+                duration: 0.1,
+                repeat: 3,
+                onComplete: () => {
+                    el.innerHTML = getMockData(viewId);
+                    gsap.fromTo(el, { filter: "blur(10px)", opacity: 0 }, { filter: "blur(0)", opacity: 1, duration: 1 });
+                }
+            });
+            await new Promise(r => setTimeout(r, 600)); // Staggered stream
+        }
+    }
+}
 
-    setTimeout(() => {
-        btn.innerText = "Generate Assets";
-        btn.style.opacity = "1";
-    }, 3000);
-};
+function getMockData(type: string): string {
+    const data: Record<string, string> = {
+        'x-view': ">> THREAD INITIALIZED // 5 NODES DETECTED. <br> >> NODE 1: Analyzing technical architecture for DeFi scale.",
+        'li-view': "Insight: The intersection of Blockchain and AI is the final frontier for UX.",
+        'img-view': "PROMPT: Cinematic render, refractive glass, cybernetic structures, ultra-detailed."
+    };
+    return data[type] || "";
+}
