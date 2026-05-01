@@ -58,3 +58,17 @@ body.elite-theme {
     font-size: 10px; color: var(--plasma-cyan); letter-spacing: 2px;
     margin-bottom: 15px; opacity: 0.6;
 }
+.scanning {
+    letter-spacing: 2px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.node-text {
+    line-height: 1.6;
+    color: #e0e0e0;
+}
