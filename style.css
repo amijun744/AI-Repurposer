@@ -1,0 +1,27 @@
+.bento-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+    gap: 20px;
+    padding: 40px;
+}
+
+.tile {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.tile:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+}
+
+/* Make the source tile take up more space */
+.source-tile {
+    grid-column: span 2;
+    grid-row: span 2;
+}
