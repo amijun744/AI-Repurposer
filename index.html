@@ -1,0 +1,27 @@
+<!-- Main Canvas -->
+<div class="bento-container">
+    <!-- Tile 1: Original Source -->
+    <div class="tile source-tile">
+        <h3>Source Content</h3>
+        <textarea id="input-text" placeholder="Paste your article here..."></textarea>
+        <button onclick="startRepurposing()" class="glow-btn">TRANSFORM</button>
+    </div>
+
+    <!-- Tile 2: X (Twitter) Thread -->
+    <div class="tile" id="x-thread-output">
+        <span class="label">X THREAD</span>
+        <div class="content-preview">Generated thread will appear here...</div>
+    </div>
+
+    <!-- Tile 3: LinkedIn Version -->
+    <div class="tile" id="linkedin-output">
+        <span class="label">LINKEDIN</span>
+        <div class="content-preview">Professional summary...</div>
+    </div>
+
+    <!-- Tile 4: AI Visual Prompts -->
+    <div class="tile" id="image-prompts">
+        <span class="label">VISUAL PROMPTS</span>
+        <ul class="prompt-list"></ul>
+    </div>
+</div>
